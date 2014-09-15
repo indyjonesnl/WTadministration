@@ -8,7 +8,7 @@ using WTnote.Properties;
 
 namespace WTnote
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private List<NationData> NationsData { get; set; } // All data that needs to be persistent.
         private const string PlanesFileName = "Planes.txt";
@@ -21,7 +21,7 @@ namespace WTnote
         private Dictionary<int, NumericUpDown> LevelNumericBoxes { get; set; }
         private Dictionary<int, ComboBox> TrainingComboBoxes { get; set; }
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
 
