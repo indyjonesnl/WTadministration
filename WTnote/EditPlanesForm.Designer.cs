@@ -42,6 +42,7 @@
             this.lbPlanes.FormattingEnabled = true;
             this.lbPlanes.Location = new System.Drawing.Point(12, 14);
             this.lbPlanes.Name = "lbPlanes";
+            this.lbPlanes.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lbPlanes.Size = new System.Drawing.Size(317, 420);
             this.lbPlanes.TabIndex = 0;
             // 
@@ -54,9 +55,9 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(118, 465);
+            this.btnAdd.Location = new System.Drawing.Point(106, 466);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(44, 23);
+            this.btnAdd.Size = new System.Drawing.Size(36, 23);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -74,9 +75,9 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(60, 465);
+            this.btnDelete.Location = new System.Drawing.Point(52, 466);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(52, 23);
+            this.btnDelete.Size = new System.Drawing.Size(48, 23);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -84,9 +85,9 @@
             // 
             // btnAddList
             // 
-            this.btnAddList.Location = new System.Drawing.Point(169, 466);
+            this.btnAddList.Location = new System.Drawing.Point(148, 466);
             this.btnAddList.Name = "btnAddList";
-            this.btnAddList.Size = new System.Drawing.Size(60, 23);
+            this.btnAddList.Size = new System.Drawing.Size(58, 23);
             this.btnAddList.TabIndex = 5;
             this.btnAddList.Text = "Add a list";
             this.btnAddList.UseVisualStyleBackColor = true;
@@ -96,7 +97,7 @@
             // 
             this.btnEdit.Location = new System.Drawing.Point(12, 466);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(42, 23);
+            this.btnEdit.Size = new System.Drawing.Size(34, 23);
             this.btnEdit.TabIndex = 6;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;

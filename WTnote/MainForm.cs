@@ -13,10 +13,10 @@ namespace WTnote
         private List<NationData> NationsData { get; set; } // All data that needs to be persistent.
         private const string PlanesFileName = "Planes.txt";
         private const string DataFileName = "NationData.txt";
-        private Nation PreviouslySelectedNation { get; set; } // In order to save the current data, before going to other tab.
+        private Nation? PreviouslySelectedNation { get; set; } // In order to save the current data, before going to other tab.
         private List<string> PlaneNames { get; set; } // List of planes used for suggestions in textboxes.
         // Lists with the necessary UI elements, hooked up to a number for easy and consistent access.
-        private Dictionary<int, TextBox> Textboxes { get; set; }
+        private Dictionary<int, TextBox> CrewTextboxes { get; set; }
         private Dictionary<int, NumericUpDown> GunnerNumericBoxes { get; set; }
         private Dictionary<int, NumericUpDown> LevelNumericBoxes { get; set; }
         private Dictionary<int, ComboBox> TrainingComboBoxes { get; set; }
@@ -25,7 +25,7 @@ namespace WTnote
         {
             InitializeComponent();
 
-            PreviouslySelectedNation = Nation.American;
+            PreviouslySelectedNation = null;
 
             NationsData = LoadNationDataFromFile(DataFileName) ?? new List<NationData>();   // Load from file, if null is returned, creates a new (empty) list,
             PlaneNames = LoadPlanesFromFile(PlanesFileName) ?? new List<string>();          //    this way you prevent a null pointer exception.
@@ -39,7 +39,7 @@ namespace WTnote
                 NationsData.Add(new NationData(Nation.Japanese));   // 4
             }
 
-            Textboxes = new Dictionary<int, TextBox>
+            CrewTextboxes = new Dictionary<int, TextBox>
                 {
                     {1, tbAmCr1},
                     {2, tbAmCr2},
@@ -113,12 +113,21 @@ namespace WTnote
                 return null;
             }
 
-            using (var sr = new StreamReader(fileName))
+            try
             {
-                var fullFileString = sr.ReadToEnd();
-                var stringArray = JsonConvert.DeserializeObject<List<string>>(fullFileString);
-                return stringArray;
+                using (var sr = new StreamReader(fileName))
+                {
+                    var fullFileString = sr.ReadToEnd();
+                    var stringArray = JsonConvert.DeserializeObject<List<string>>(fullFileString);
+                    return stringArray;
+                }
             }
+            catch (IOException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return null;
         }
 
         private static void SavePlanesToFile(string fileName, List<string> planeNames)
@@ -191,9 +200,9 @@ namespace WTnote
 
         private void LoadDataIntoGui(Nation selectedNation)
         {
-            SaveGuiData();
+            SaveGuiData(); // Saves the previously selected Nation
 
-            PreviouslySelectedNation = selectedNation;
+            PreviouslySelectedNation = selectedNation; // Set the newly selected Nation as the 'last' selected Nation
 
             var selectedNationNr = 0;
             switch (selectedNation)
@@ -217,42 +226,17 @@ namespace WTnote
 
             for (var i = 1; i < 10; i++)
             {
-                Textboxes[i].Text = NationsData[selectedNationNr].CrewString[i];
+                CrewTextboxes[i].Text = NationsData[selectedNationNr].CrewString[i];
                 GunnerNumericBoxes[i].Value = NationsData[selectedNationNr].CrewGunner[i];
                 LevelNumericBoxes[i].Value = NationsData[selectedNationNr].CrewLevel[i];
                 TrainingComboBoxes[i].SelectedItem = NationsData[selectedNationNr].CrewTraining[i];
             }
-
-            /*if (cbAm1.SelectedIndex < 0) // Use when json file goes bad
-                cbAm1.SelectedIndex = 0;
-
-            if (cbAm2.SelectedIndex < 0)
-                cbAm2.SelectedIndex = 0;
-
-            if (cbAm3.SelectedIndex < 0)
-                cbAm3.SelectedIndex = 0;
-
-            if (cbAm4.SelectedIndex < 0)
-                cbAm4.SelectedIndex = 0;
-
-            if (cbAm5.SelectedIndex < 0)
-                cbAm5.SelectedIndex = 0;
-
-            if (cbAm6.SelectedIndex < 0)
-                cbAm6.SelectedIndex = 0;
-
-            if (cbAm7.SelectedIndex < 0)
-                cbAm7.SelectedIndex = 0;
-
-            if (cbAm8.SelectedIndex < 0)
-                cbAm8.SelectedIndex = 0;
-
-            if (cbAm9.SelectedIndex < 0)
-                cbAm9.SelectedIndex = 0;*/
         }
 
         private void SaveGuiData()
         {
+            if (PreviouslySelectedNation == null) return;
+
             var selectedNation = 0;
 
             switch (PreviouslySelectedNation)
@@ -276,7 +260,7 @@ namespace WTnote
 
             for (var i = 1; i < 10; i++)
             {
-                NationsData[selectedNation].CrewString[i] = Textboxes[i].Text;
+                NationsData[selectedNation].CrewString[i] = CrewTextboxes[i].Text;
                 NationsData[selectedNation].CrewGunner[i] = (int)GunnerNumericBoxes[i].Value;
                 NationsData[selectedNation].CrewLevel[i] = (int)LevelNumericBoxes[i].Value;
                 NationsData[selectedNation].CrewTraining[i] = (CrewTraining)TrainingComboBoxes[i].SelectedIndex;
@@ -310,7 +294,9 @@ namespace WTnote
 
         private void btnEditPlanes_Click(object sender, EventArgs e)
         {
-            new EditPlanesForm(PlaneNames).ShowDialog();
+            var editForm = new EditPlanesForm(PlaneNames);
+            editForm.ShowDialog();
+            PlaneNames = editForm.Planes;
             BindSuggestionsToAllTextboxes();
         }
 
@@ -319,7 +305,7 @@ namespace WTnote
             var source = new AutoCompleteStringCollection();
             source.AddRange(PlaneNames.ToArray());
 
-            foreach (var tb in Textboxes.Values)
+            foreach (var tb in CrewTextboxes.Values)
             {
                 tb.AutoCompleteCustomSource = source;
                 tb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
