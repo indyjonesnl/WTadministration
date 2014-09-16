@@ -313,7 +313,7 @@
             0,
             0});
             this.numAmLv2.Name = "numAmLv2";
-            this.numAmLv2.Size = new System.Drawing.Size(32, 20);
+            this.numAmLv2.Size = new System.Drawing.Size(47, 20);
             this.numAmLv2.TabIndex = 3;
             this.numAmLv2.Value = new decimal(new int[] {
             1,
