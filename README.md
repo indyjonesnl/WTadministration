@@ -19,3 +19,9 @@ Programming:
 
 - Data is saved in Json and then in a text file, this makes it really easy to edit (since it is human readable).
 - Written in C# with (hopefully) clear variable names, might make for a nice project to practice programming on.
+
+
+Possible additions:
+
+- Variable amount of crews per nation, so that when you have 6 crews in the game, you won't see crews 7, 8 and 9.
+- Ditching the slow collection of TextBoxes, ComboBoxes and NumericUpDown thingies and replacing it all with a nice (Object)ListView or something.
