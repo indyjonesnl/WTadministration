@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tbAmCr1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbAm1 = new System.Windows.Forms.ComboBox();
@@ -36,7 +36,6 @@
             this.numAmLv1 = new System.Windows.Forms.NumericUpDown();
             this.numAmGn1 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tbAmCr2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbAm2 = new System.Windows.Forms.ComboBox();
@@ -44,7 +43,6 @@
             this.numAmLv2 = new System.Windows.Forms.NumericUpDown();
             this.numAmGn2 = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tbAmCr3 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbAm3 = new System.Windows.Forms.ComboBox();
@@ -102,14 +100,14 @@
             this.label27 = new System.Windows.Forms.Label();
             this.btnSaveAm = new System.Windows.Forms.Button();
             this.cbSelectedNation = new System.Windows.Forms.ComboBox();
-            this.btnEditPlanes = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.btnEditVehicles = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.numAmLv1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAmGn1)).BeginInit();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAmLv2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAmGn2)).BeginInit();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAmLv3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAmGn3)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -130,25 +128,10 @@
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAmLv9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAmGn9)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.tbAmCr1);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.cbAm1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.numAmLv1);
-            this.groupBox1.Controls.Add(this.numAmGn1);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 85);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Crew 1";
             // 
             // tbAmCr1
             // 
@@ -162,7 +145,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(98, 42);
+            this.label3.Location = new System.Drawing.Point(129, 42);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 13);
             this.label3.TabIndex = 7;
@@ -172,9 +155,9 @@
             // 
             this.cbAm1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAm1.FormattingEnabled = true;
-            this.cbAm1.Location = new System.Drawing.Point(100, 58);
+            this.cbAm1.Location = new System.Drawing.Point(134, 58);
             this.cbAm1.Name = "cbAm1";
-            this.cbAm1.Size = new System.Drawing.Size(94, 21);
+            this.cbAm1.Size = new System.Drawing.Size(60, 21);
             this.cbAm1.TabIndex = 6;
             // 
             // label2
@@ -190,7 +173,7 @@
             // numAmLv1
             // 
             this.numAmLv1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAmLv1.Location = new System.Drawing.Point(47, 59);
+            this.numAmLv1.Location = new System.Drawing.Point(62, 59);
             this.numAmLv1.Maximum = new decimal(new int[] {
             999,
             0,
@@ -215,7 +198,7 @@
             this.numAmGn1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.numAmGn1.Location = new System.Drawing.Point(9, 59);
             this.numAmGn1.Maximum = new decimal(new int[] {
-            99,
+            10,
             0,
             0,
             0});
@@ -225,7 +208,7 @@
             0,
             0});
             this.numAmGn1.Name = "numAmGn1";
-            this.numAmGn1.Size = new System.Drawing.Size(32, 20);
+            this.numAmGn1.Size = new System.Drawing.Size(40, 20);
             this.numAmGn1.TabIndex = 2;
             this.numAmGn1.Value = new decimal(new int[] {
             1,
@@ -243,24 +226,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Gunners";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.tbAmCr2);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.cbAm2);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.numAmLv2);
-            this.groupBox2.Controls.Add(this.numAmGn2);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox2.Location = new System.Drawing.Point(218, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 85);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Crew 2";
-            // 
             // tbAmCr2
             // 
             this.tbAmCr2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -273,7 +238,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(98, 42);
+            this.label4.Location = new System.Drawing.Point(129, 42);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 13);
             this.label4.TabIndex = 7;
@@ -283,9 +248,9 @@
             // 
             this.cbAm2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAm2.FormattingEnabled = true;
-            this.cbAm2.Location = new System.Drawing.Point(100, 58);
+            this.cbAm2.Location = new System.Drawing.Point(134, 59);
             this.cbAm2.Name = "cbAm2";
-            this.cbAm2.Size = new System.Drawing.Size(94, 21);
+            this.cbAm2.Size = new System.Drawing.Size(60, 21);
             this.cbAm2.TabIndex = 6;
             // 
             // label5
@@ -301,7 +266,7 @@
             // numAmLv2
             // 
             this.numAmLv2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAmLv2.Location = new System.Drawing.Point(62, 59);
+            this.numAmLv2.Location = new System.Drawing.Point(62, 58);
             this.numAmLv2.Maximum = new decimal(new int[] {
             999,
             0,
@@ -326,7 +291,7 @@
             this.numAmGn2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.numAmGn2.Location = new System.Drawing.Point(9, 59);
             this.numAmGn2.Maximum = new decimal(new int[] {
-            99,
+            10,
             0,
             0,
             0});
@@ -336,7 +301,7 @@
             0,
             0});
             this.numAmGn2.Name = "numAmGn2";
-            this.numAmGn2.Size = new System.Drawing.Size(32, 20);
+            this.numAmGn2.Size = new System.Drawing.Size(40, 20);
             this.numAmGn2.TabIndex = 2;
             this.numAmGn2.Value = new decimal(new int[] {
             1,
@@ -354,24 +319,6 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Gunners";
             // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox3.Controls.Add(this.tbAmCr3);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.cbAm3);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.numAmLv3);
-            this.groupBox3.Controls.Add(this.numAmGn3);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox3.Location = new System.Drawing.Point(424, 12);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 85);
-            this.groupBox3.TabIndex = 9;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Crew 3";
-            // 
             // tbAmCr3
             // 
             this.tbAmCr3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -384,7 +331,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(98, 42);
+            this.label7.Location = new System.Drawing.Point(129, 42);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 13);
             this.label7.TabIndex = 7;
@@ -394,9 +341,9 @@
             // 
             this.cbAm3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAm3.FormattingEnabled = true;
-            this.cbAm3.Location = new System.Drawing.Point(100, 58);
+            this.cbAm3.Location = new System.Drawing.Point(134, 59);
             this.cbAm3.Name = "cbAm3";
-            this.cbAm3.Size = new System.Drawing.Size(94, 21);
+            this.cbAm3.Size = new System.Drawing.Size(60, 21);
             this.cbAm3.TabIndex = 6;
             // 
             // label8
@@ -412,7 +359,7 @@
             // numAmLv3
             // 
             this.numAmLv3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAmLv3.Location = new System.Drawing.Point(47, 59);
+            this.numAmLv3.Location = new System.Drawing.Point(62, 58);
             this.numAmLv3.Maximum = new decimal(new int[] {
             999,
             0,
@@ -437,7 +384,7 @@
             this.numAmGn3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.numAmGn3.Location = new System.Drawing.Point(9, 59);
             this.numAmGn3.Maximum = new decimal(new int[] {
-            99,
+            10,
             0,
             0,
             0});
@@ -447,7 +394,7 @@
             0,
             0});
             this.numAmGn3.Name = "numAmGn3";
-            this.numAmGn3.Size = new System.Drawing.Size(32, 20);
+            this.numAmGn3.Size = new System.Drawing.Size(40, 20);
             this.numAmGn3.TabIndex = 2;
             this.numAmGn3.Value = new decimal(new int[] {
             1,
@@ -495,7 +442,7 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(98, 42);
+            this.label10.Location = new System.Drawing.Point(129, 42);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 13);
             this.label10.TabIndex = 7;
@@ -505,9 +452,9 @@
             // 
             this.cbAm4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAm4.FormattingEnabled = true;
-            this.cbAm4.Location = new System.Drawing.Point(100, 58);
+            this.cbAm4.Location = new System.Drawing.Point(134, 58);
             this.cbAm4.Name = "cbAm4";
-            this.cbAm4.Size = new System.Drawing.Size(94, 21);
+            this.cbAm4.Size = new System.Drawing.Size(60, 21);
             this.cbAm4.TabIndex = 6;
             // 
             // label11
@@ -523,7 +470,7 @@
             // numAmLv4
             // 
             this.numAmLv4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAmLv4.Location = new System.Drawing.Point(47, 59);
+            this.numAmLv4.Location = new System.Drawing.Point(62, 59);
             this.numAmLv4.Maximum = new decimal(new int[] {
             999,
             0,
@@ -548,7 +495,7 @@
             this.numAmGn4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.numAmGn4.Location = new System.Drawing.Point(9, 59);
             this.numAmGn4.Maximum = new decimal(new int[] {
-            99,
+            10,
             0,
             0,
             0});
@@ -558,7 +505,7 @@
             0,
             0});
             this.numAmGn4.Name = "numAmGn4";
-            this.numAmGn4.Size = new System.Drawing.Size(32, 20);
+            this.numAmGn4.Size = new System.Drawing.Size(40, 20);
             this.numAmGn4.TabIndex = 2;
             this.numAmGn4.Value = new decimal(new int[] {
             1,
@@ -606,7 +553,7 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(98, 42);
+            this.label13.Location = new System.Drawing.Point(129, 42);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(65, 13);
             this.label13.TabIndex = 7;
@@ -616,9 +563,9 @@
             // 
             this.cbAm5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAm5.FormattingEnabled = true;
-            this.cbAm5.Location = new System.Drawing.Point(100, 58);
+            this.cbAm5.Location = new System.Drawing.Point(134, 58);
             this.cbAm5.Name = "cbAm5";
-            this.cbAm5.Size = new System.Drawing.Size(94, 21);
+            this.cbAm5.Size = new System.Drawing.Size(60, 21);
             this.cbAm5.TabIndex = 6;
             // 
             // label14
@@ -634,7 +581,7 @@
             // numAmLv5
             // 
             this.numAmLv5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAmLv5.Location = new System.Drawing.Point(47, 59);
+            this.numAmLv5.Location = new System.Drawing.Point(62, 59);
             this.numAmLv5.Maximum = new decimal(new int[] {
             999,
             0,
@@ -659,7 +606,7 @@
             this.numAmGn5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.numAmGn5.Location = new System.Drawing.Point(9, 59);
             this.numAmGn5.Maximum = new decimal(new int[] {
-            99,
+            10,
             0,
             0,
             0});
@@ -669,7 +616,7 @@
             0,
             0});
             this.numAmGn5.Name = "numAmGn5";
-            this.numAmGn5.Size = new System.Drawing.Size(32, 20);
+            this.numAmGn5.Size = new System.Drawing.Size(40, 20);
             this.numAmGn5.TabIndex = 2;
             this.numAmGn5.Value = new decimal(new int[] {
             1,
@@ -717,7 +664,7 @@
             // 
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(98, 42);
+            this.label16.Location = new System.Drawing.Point(129, 42);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(65, 13);
             this.label16.TabIndex = 7;
@@ -727,9 +674,9 @@
             // 
             this.cbAm6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAm6.FormattingEnabled = true;
-            this.cbAm6.Location = new System.Drawing.Point(100, 58);
+            this.cbAm6.Location = new System.Drawing.Point(134, 58);
             this.cbAm6.Name = "cbAm6";
-            this.cbAm6.Size = new System.Drawing.Size(94, 21);
+            this.cbAm6.Size = new System.Drawing.Size(60, 21);
             this.cbAm6.TabIndex = 6;
             // 
             // label17
@@ -745,7 +692,7 @@
             // numAmLv6
             // 
             this.numAmLv6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAmLv6.Location = new System.Drawing.Point(47, 59);
+            this.numAmLv6.Location = new System.Drawing.Point(62, 58);
             this.numAmLv6.Maximum = new decimal(new int[] {
             999,
             0,
@@ -770,7 +717,7 @@
             this.numAmGn6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.numAmGn6.Location = new System.Drawing.Point(9, 59);
             this.numAmGn6.Maximum = new decimal(new int[] {
-            99,
+            10,
             0,
             0,
             0});
@@ -780,7 +727,7 @@
             0,
             0});
             this.numAmGn6.Name = "numAmGn6";
-            this.numAmGn6.Size = new System.Drawing.Size(32, 20);
+            this.numAmGn6.Size = new System.Drawing.Size(40, 20);
             this.numAmGn6.TabIndex = 2;
             this.numAmGn6.Value = new decimal(new int[] {
             1,
@@ -828,7 +775,7 @@
             // 
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(98, 42);
+            this.label19.Location = new System.Drawing.Point(129, 42);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(65, 13);
             this.label19.TabIndex = 7;
@@ -838,9 +785,9 @@
             // 
             this.cbAm7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAm7.FormattingEnabled = true;
-            this.cbAm7.Location = new System.Drawing.Point(100, 58);
+            this.cbAm7.Location = new System.Drawing.Point(134, 58);
             this.cbAm7.Name = "cbAm7";
-            this.cbAm7.Size = new System.Drawing.Size(94, 21);
+            this.cbAm7.Size = new System.Drawing.Size(60, 21);
             this.cbAm7.TabIndex = 6;
             // 
             // label20
@@ -856,7 +803,7 @@
             // numAmLv7
             // 
             this.numAmLv7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAmLv7.Location = new System.Drawing.Point(47, 59);
+            this.numAmLv7.Location = new System.Drawing.Point(62, 59);
             this.numAmLv7.Maximum = new decimal(new int[] {
             999,
             0,
@@ -881,7 +828,7 @@
             this.numAmGn7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.numAmGn7.Location = new System.Drawing.Point(9, 59);
             this.numAmGn7.Maximum = new decimal(new int[] {
-            99,
+            10,
             0,
             0,
             0});
@@ -891,7 +838,7 @@
             0,
             0});
             this.numAmGn7.Name = "numAmGn7";
-            this.numAmGn7.Size = new System.Drawing.Size(32, 20);
+            this.numAmGn7.Size = new System.Drawing.Size(40, 20);
             this.numAmGn7.TabIndex = 2;
             this.numAmGn7.Value = new decimal(new int[] {
             1,
@@ -939,7 +886,7 @@
             // 
             this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(98, 42);
+            this.label22.Location = new System.Drawing.Point(129, 42);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(65, 13);
             this.label22.TabIndex = 7;
@@ -949,9 +896,9 @@
             // 
             this.cbAm8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAm8.FormattingEnabled = true;
-            this.cbAm8.Location = new System.Drawing.Point(100, 58);
+            this.cbAm8.Location = new System.Drawing.Point(134, 58);
             this.cbAm8.Name = "cbAm8";
-            this.cbAm8.Size = new System.Drawing.Size(94, 21);
+            this.cbAm8.Size = new System.Drawing.Size(60, 21);
             this.cbAm8.TabIndex = 6;
             // 
             // label23
@@ -967,7 +914,7 @@
             // numAmLv8
             // 
             this.numAmLv8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAmLv8.Location = new System.Drawing.Point(47, 59);
+            this.numAmLv8.Location = new System.Drawing.Point(62, 59);
             this.numAmLv8.Maximum = new decimal(new int[] {
             999,
             0,
@@ -992,7 +939,7 @@
             this.numAmGn8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.numAmGn8.Location = new System.Drawing.Point(9, 59);
             this.numAmGn8.Maximum = new decimal(new int[] {
-            99,
+            10,
             0,
             0,
             0});
@@ -1002,7 +949,7 @@
             0,
             0});
             this.numAmGn8.Name = "numAmGn8";
-            this.numAmGn8.Size = new System.Drawing.Size(32, 20);
+            this.numAmGn8.Size = new System.Drawing.Size(40, 20);
             this.numAmGn8.TabIndex = 2;
             this.numAmGn8.Value = new decimal(new int[] {
             1,
@@ -1050,7 +997,7 @@
             // 
             this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(98, 42);
+            this.label25.Location = new System.Drawing.Point(129, 42);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(65, 13);
             this.label25.TabIndex = 7;
@@ -1060,9 +1007,9 @@
             // 
             this.cbAm9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAm9.FormattingEnabled = true;
-            this.cbAm9.Location = new System.Drawing.Point(100, 58);
+            this.cbAm9.Location = new System.Drawing.Point(134, 58);
             this.cbAm9.Name = "cbAm9";
-            this.cbAm9.Size = new System.Drawing.Size(94, 21);
+            this.cbAm9.Size = new System.Drawing.Size(60, 21);
             this.cbAm9.TabIndex = 6;
             // 
             // label26
@@ -1078,7 +1025,7 @@
             // numAmLv9
             // 
             this.numAmLv9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAmLv9.Location = new System.Drawing.Point(47, 59);
+            this.numAmLv9.Location = new System.Drawing.Point(62, 59);
             this.numAmLv9.Maximum = new decimal(new int[] {
             999,
             0,
@@ -1103,7 +1050,7 @@
             this.numAmGn9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.numAmGn9.Location = new System.Drawing.Point(9, 59);
             this.numAmGn9.Maximum = new decimal(new int[] {
-            99,
+            10,
             0,
             0,
             0});
@@ -1113,7 +1060,7 @@
             0,
             0});
             this.numAmGn9.Name = "numAmGn9";
-            this.numAmGn9.Size = new System.Drawing.Size(32, 20);
+            this.numAmGn9.Size = new System.Drawing.Size(40, 20);
             this.numAmGn9.TabIndex = 2;
             this.numAmGn9.Value = new decimal(new int[] {
             1,
@@ -1150,22 +1097,77 @@
             this.cbSelectedNation.TabIndex = 11;
             this.cbSelectedNation.SelectedIndexChanged += new System.EventHandler(this.cbSelectedNation_SelectedIndexChanged);
             // 
-            // btnEditPlanes
+            // btnEditVehicles
             // 
-            this.btnEditPlanes.Location = new System.Drawing.Point(551, 284);
-            this.btnEditPlanes.Name = "btnEditPlanes";
-            this.btnEditPlanes.Size = new System.Drawing.Size(75, 23);
-            this.btnEditPlanes.TabIndex = 12;
-            this.btnEditPlanes.Text = "Edit planes";
-            this.btnEditPlanes.UseVisualStyleBackColor = true;
-            this.btnEditPlanes.Click += new System.EventHandler(this.btnEditPlanes_Click);
+            this.btnEditVehicles.Location = new System.Drawing.Point(551, 284);
+            this.btnEditVehicles.Name = "btnEditVehicles";
+            this.btnEditVehicles.Size = new System.Drawing.Size(75, 23);
+            this.btnEditVehicles.TabIndex = 12;
+            this.btnEditVehicles.Text = "Edit vehicles";
+            this.btnEditVehicles.UseVisualStyleBackColor = true;
+            this.btnEditVehicles.Click += new System.EventHandler(this.btnEditPlanes_Click);
             // 
-            // Form1
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.tbAmCr3);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.cbAm3);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.numAmLv3);
+            this.groupBox3.Controls.Add(this.numAmGn3);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox3.Location = new System.Drawing.Point(424, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(200, 85);
+            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Crew 3";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.tbAmCr2);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.cbAm2);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.numAmLv2);
+            this.groupBox2.Controls.Add(this.numAmGn2);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Location = new System.Drawing.Point(218, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 85);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Crew 2";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.tbAmCr1);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.cbAm1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.numAmLv1);
+            this.groupBox1.Controls.Add(this.numAmGn1);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 85);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Crew 1";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(638, 320);
-            this.Controls.Add(this.btnEditPlanes);
+            this.Controls.Add(this.btnEditVehicles);
             this.Controls.Add(this.cbSelectedNation);
             this.Controls.Add(this.btnSaveAm);
             this.Controls.Add(this.groupBox9);
@@ -1178,19 +1180,16 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox6);
             this.DoubleBuffered = true;
-            this.Name = "Form1";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.Name = "MainForm";
             this.Text = "War Thunder Crews";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAmLv1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAmGn1)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAmLv2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAmGn2)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAmLv3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAmGn3)).EndInit();
             this.groupBox4.ResumeLayout(false);
@@ -1217,13 +1216,18 @@
             this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAmLv9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAmGn9)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbAm1;
         private System.Windows.Forms.Label label2;
@@ -1279,7 +1283,6 @@
         private System.Windows.Forms.NumericUpDown numAmLv4;
         private System.Windows.Forms.NumericUpDown numAmGn4;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox tbAmCr3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbAm3;
@@ -1288,7 +1291,6 @@
         private System.Windows.Forms.NumericUpDown numAmGn3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnSaveAm;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox tbAmCr2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbAm2;
@@ -1297,7 +1299,10 @@
         private System.Windows.Forms.NumericUpDown numAmGn2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbSelectedNation;
-        private System.Windows.Forms.Button btnEditPlanes;
+        private System.Windows.Forms.Button btnEditVehicles;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

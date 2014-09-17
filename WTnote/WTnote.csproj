@@ -52,11 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EditPlanesForm.cs">
+    <Compile Include="EditVehiclesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditPlanesForm.Designer.cs">
-      <DependentUpon>EditPlanesForm.cs</DependentUpon>
+    <Compile Include="EditVehiclesForm.Designer.cs">
+      <DependentUpon>EditVehiclesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="EditStringForm.cs">
       <SubType>Form</SubType>
@@ -79,8 +79,8 @@
     <Compile Include="NationData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="EditPlanesForm.resx">
-      <DependentUpon>EditPlanesForm.cs</DependentUpon>
+    <EmbeddedResource Include="EditVehiclesForm.resx">
+      <DependentUpon>EditVehiclesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditStringForm.resx">
       <DependentUpon>EditStringForm.cs</DependentUpon>

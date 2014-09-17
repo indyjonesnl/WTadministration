@@ -11,10 +11,10 @@ namespace WTnote
     public partial class MainForm : Form
     {
         private List<NationData> NationsData { get; set; } // All data that needs to be persistent.
-        private const string PlanesFileName = "Planes.txt";
-        private const string DataFileName = "NationData.txt";
-        private Nation? PreviouslySelectedNation { get; set; } // In order to save the current data, before going to other tab.
-        private List<string> PlaneNames { get; set; } // List of planes used for suggestions in textboxes.
+        private const string VehicleDataFileName = "Vehicles.txt";
+        private const string NationDataFileName = "NationData.txt";
+        private Nation? PreviouslySelectedNation { get; set; } // In order to save the current data, before going to other tab. ? signifies nullable enum!
+        private List<string> VehicleNames { get; set; } // List of planes used for suggestions in textboxes.
         // Lists with the necessary UI elements, hooked up to a number for easy and consistent access.
         private Dictionary<int, TextBox> CrewTextboxes { get; set; }
         private Dictionary<int, NumericUpDown> GunnerNumericBoxes { get; set; }
@@ -27,8 +27,8 @@ namespace WTnote
 
             PreviouslySelectedNation = null;
 
-            NationsData = LoadNationDataFromFile(DataFileName) ?? new List<NationData>();   // Load from file, if null is returned, creates a new (empty) list,
-            PlaneNames = LoadPlanesFromFile(PlanesFileName) ?? new List<string>();          //    this way you prevent a null pointer exception.
+            NationsData = LoadNationDataFromFile(NationDataFileName) ?? new List<NationData>();   // Load from file, if null is returned, creates a new (empty) list,
+            VehicleNames = LoadVehiclesFromFile(VehicleDataFileName) ?? new List<string>();          //    this way you prevent a null pointer exception.
 
             if (NationsData.Count < 1) // Happens only when nothing comes from reading the file with data.
             {
@@ -38,6 +38,8 @@ namespace WTnote
                 NationsData.Add(new NationData(Nation.British));    // 3
                 NationsData.Add(new NationData(Nation.Japanese));   // 4
             }
+
+            #region Saving GUI elements in Dictionaries
 
             CrewTextboxes = new Dictionary<int, TextBox>
                 {
@@ -91,6 +93,8 @@ namespace WTnote
                     {9, cbAm9}
                 };
 
+            #endregion
+
             var trainingItems = Enum.GetValues(typeof(CrewTraining)).Cast<object>().ToArray();
             foreach (var cb in TrainingComboBoxes.Values)
             {
@@ -102,78 +106,7 @@ namespace WTnote
             BindSuggestionsToAllTextboxes();
 
             cbSelectedNation.SelectedIndex = 0; // Selects the first nation in the combobox, automatically triggering the event linked to it.
-            // This fires of the LoadDataIntoGui() method with the selected nation.
-        }
-
-        private static List<string> LoadPlanesFromFile(string fileName)
-        {
-            if (!File.Exists(fileName))
-            {
-                File.Create(fileName);
-                return null;
-            }
-
-            try
-            {
-                using (var sr = new StreamReader(fileName))
-                {
-                    var fullFileString = sr.ReadToEnd();
-                    var stringArray = JsonConvert.DeserializeObject<List<string>>(fullFileString);
-                    return stringArray;
-                }
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-            return null;
-        }
-
-        private static void SavePlanesToFile(string fileName, List<string> planeNames)
-        {
-            using (var sw = new StreamWriter(fileName))
-            {
-                var jsonString = JsonConvert.SerializeObject(planeNames);
-                sw.Write(jsonString);
-                sw.Close();
-                Console.WriteLine("Planes saved!");
-            }
-        }
-
-        private static List<NationData> LoadNationDataFromFile(string dataFileName)
-        {
-            if (!File.Exists(dataFileName))
-            {
-                File.Create(dataFileName);
-                return null;
-            }
-
-            try
-            {
-                using (var sr = new StreamReader(dataFileName))
-                {
-                    var fullFile = sr.ReadToEnd();
-                    sr.Close();
-                    var deserializedObject = JsonConvert.DeserializeObject<List<NationData>>(fullFile);
-                    return deserializedObject;
-                }
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-            return null;
-        }
-
-        private void cbSelectedNation_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var selectedNation = (Nation)cbSelectedNation.SelectedItem;
-
-            ChangeBackground(selectedNation);
-
-            LoadDataIntoGui(selectedNation);
+            // This fires off the LoadDataIntoGui() method with the selected nation.
         }
 
         private void ChangeBackground(Nation selectedNation)
@@ -267,43 +200,10 @@ namespace WTnote
             }
         }
 
-        private void btnSaveAm_Click(object sender, EventArgs e)
-        {
-            SaveGuiData();
-            SaveDataToFile(DataFileName, NationsData);
-            SavePlanesToFile(PlanesFileName, PlaneNames);
-        }
-
-        private static void SaveDataToFile(string fileName, List<NationData> nationData)
-        {
-            using (var sw = new StreamWriter(fileName))
-            {
-                var serializedObject = JsonConvert.SerializeObject(nationData);
-                sw.Write(serializedObject);
-                sw.Close();
-                Console.WriteLine("Crew data is saved!");
-            }
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            SaveGuiData();
-            SaveDataToFile(DataFileName, NationsData);
-            SavePlanesToFile(PlanesFileName, PlaneNames);
-        }
-
-        private void btnEditPlanes_Click(object sender, EventArgs e)
-        {
-            var editForm = new EditPlanesForm(PlaneNames);
-            editForm.ShowDialog();
-            PlaneNames = editForm.Planes;
-            BindSuggestionsToAllTextboxes();
-        }
-
         private void BindSuggestionsToAllTextboxes()
         {
             var source = new AutoCompleteStringCollection();
-            source.AddRange(PlaneNames.ToArray());
+            source.AddRange(VehicleNames.ToArray());
 
             foreach (var tb in CrewTextboxes.Values)
             {
@@ -312,14 +212,119 @@ namespace WTnote
                 tb.AutoCompleteSource = AutoCompleteSource.CustomSource;
             }
         }
-    }
 
-    public enum Nation
-    {
-        American = 0,
-        German = 1,
-        Russian = 2,
-        British = 3,
-        Japanese = 4
+        #region Saving and Loading Data
+
+        private static List<string> LoadVehiclesFromFile(string fileName)
+        {
+            if (!File.Exists(fileName))
+            {
+                File.Create(fileName);
+                return null;
+            }
+
+            try
+            {
+                using (var sr = new StreamReader(fileName))
+                {
+                    var fullFileString = sr.ReadToEnd();
+                    var stringArray = JsonConvert.DeserializeObject<List<string>>(fullFileString);
+                    return stringArray;
+                }
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return null;
+        }
+
+        private static void SaveVehiclesToFile(string fileName, List<string> planeNames)
+        {
+            using (var sw = new StreamWriter(fileName))
+            {
+                var jsonString = JsonConvert.SerializeObject(planeNames);
+                sw.Write(jsonString);
+                sw.Close();
+                Console.WriteLine(Resources.SavePlanesToFile_VehicleDataSaved);
+            }
+        }
+
+        private static List<NationData> LoadNationDataFromFile(string dataFileName)
+        {
+            if (!File.Exists(dataFileName))
+            {
+                File.Create(dataFileName);
+                return null;
+            }
+
+            try
+            {
+                using (var sr = new StreamReader(dataFileName))
+                {
+                    var fullFile = sr.ReadToEnd();
+                    sr.Close();
+                    var deserializedObject = JsonConvert.DeserializeObject<List<NationData>>(fullFile);
+                    return deserializedObject;
+                }
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return null;
+        }
+
+        private static void SaveNationsDataToFile(string fileName, List<NationData> nationData)
+        {
+            using (var sw = new StreamWriter(fileName))
+            {
+                var serializedObject = JsonConvert.SerializeObject(nationData);
+                sw.Write(serializedObject);
+                sw.Close();
+                Console.WriteLine(Resources.SaveDataToFile_DataSaved);
+            }
+        }
+
+        #endregion
+
+        #region Events and Eventhandlers
+
+        private void btnSaveAm_Click(object sender, EventArgs e)
+        {
+            SaveGuiData();
+            SaveNationsDataToFile(NationDataFileName, NationsData);
+            SaveVehiclesToFile(VehicleDataFileName, VehicleNames);
+        }
+
+        private void btnEditPlanes_Click(object sender, EventArgs e)
+        {
+            var vehiclesForm = new EditVehiclesForm(VehicleNames);
+            var dialogResult = vehiclesForm.ShowDialog();
+
+            if (dialogResult != DialogResult.OK) return;
+            VehicleNames = vehiclesForm.Planes;
+            BindSuggestionsToAllTextboxes();
+        }
+
+        private void cbSelectedNation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedNation = (Nation)cbSelectedNation.SelectedItem;
+
+            ChangeBackground(selectedNation);
+
+            LoadDataIntoGui(selectedNation);
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveGuiData();
+            SaveNationsDataToFile(NationDataFileName, NationsData);
+            SaveVehiclesToFile(VehicleDataFileName, VehicleNames);
+        }
+
+        #endregion
     }
 }

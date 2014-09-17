@@ -109,5 +109,23 @@ namespace WTnote.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crew data is saved!.
+        /// </summary>
+        internal static string SaveDataToFile_DataSaved {
+            get {
+                return ResourceManager.GetString("SaveDataToFile_DataSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vehicles saved!.
+        /// </summary>
+        internal static string SavePlanesToFile_VehicleDataSaved {
+            get {
+                return ResourceManager.GetString("SavePlanesToFile_VehicleDataSaved", resourceCulture);
+            }
+        }
     }
 }

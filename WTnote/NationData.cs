@@ -29,6 +29,15 @@ namespace WTnote
         public Dictionary<int, CrewTraining> CrewTraining { get; set; }
     }
 
+    public enum Nation
+    {
+        American = 0,
+        German = 1,
+        Russian = 2,
+        British = 3,
+        Japanese = 4
+    }
+
     public enum CrewTraining
     {
         Normal = 0,
